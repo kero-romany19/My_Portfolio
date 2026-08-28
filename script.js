@@ -122,7 +122,7 @@ function setupContactForm(form) {
   fields.forEach((field) => {
     field.addEventListener("blur", () => validateField(field));
     field.addEventListener("input", () => {
-      if (field.getCustomValidity()) validateField(field);
+      if (field.validity.customError) validateField(field);
     });
   });
 
@@ -198,7 +198,7 @@ function validateField(field) {
 
   if (!value) {
     errorMessage = "This field is required.";
-  } else if (field.type === "email" && !field.validity.valid) {
+  } else if (field.type === "email" && field.validity.typeMismatch) {
     errorMessage = "Please enter a valid email address.";
   }
 
