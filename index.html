@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Portfolio</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- Skip to main content link for keyboard navigation -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <header role="banner">
+      <h1>Kerolos Romany</h1>
+      <nav role="navigation" aria-label="Main navigation">
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main id="main-content">
+      <section id="about" role="region" aria-labelledby="about-heading">
+        <div class="about-container">
+          <figure class="profile-image">
+            <img
+              src="LinkedIn Profile Image.jpeg"
+              alt="Professional headshot - Your Name"
+              class="circular-image"
+            />
+          </figure>
+          <div class="about-content">
+            <h2 id="about-heading">About Me</h2>
+            <p>
+              I'm a Business Information Systems (BIS) student and an aspiring
+              Full-Stack Developer passionate about building practical and
+              user-focused applications. I’m currently developing my skills in
+              C#, .NET, SQL Server, and modern web development. I enjoy turning
+              ideas into real-world projects while continuously improving my
+              problem-solving and development skills. My goal is to become a
+              skilled Full-Stack Developer capable of building complete,
+              scalable applications from frontend to backend.
+            </p>
+            <p>
+              I specialize in C#, .Net, and full-stack development, with a
+              commitment to writing clean, maintainable code and delivering
+              exceptional user experiences.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="projects" role="region" aria-labelledby="projects-heading">
+        <h2 id="projects-heading">Projects</h2>
+
+        <div class="projects-grid">
+          <article class="project">
+            <figure>
+              <img
+                src="Saknni-app-img.png"
+                alt="Saknni — Rental Mobile Application"
+              />
+              <figcaption>A modern rental reservasion mopile app</figcaption>
+            </figure>
+            <div class="project-content">
+              <h3>Saknni — Rental Mobile Application</h3>
+              <p>
+                A full-stack rental platform designed to help users discover and
+                manage rental properties through a mobile application.
+              </p>
+              <div class="project-footer">
+                <span class="project-tag">Flutter</span>
+                <span class="project-tag">Express.js</span>
+                <span class="project-tag">MongoDB</span>
+                <span class="project-tag">Mongoose</span>
+                <span class="project-tag">Supabase</span>
+                <span class="project-tag">JWT</span>
+                <span class="project-tag">REST APIs</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="project">
+            <figure>
+              <img
+                src="SkillBridge — Team-Based Web Project-img.png"
+                alt="SkillBridge — Team-Based Web Project"
+              />
+              <figcaption>
+                An intuitive task tracking and collaboration tool
+              </figcaption>
+            </figure>
+            <div class="project-content">
+              <h3>SkillBridge</h3>
+              <p>
+                A collaborative web project developed as part of a team,
+                focusing on applying software development concepts in a
+                real-world project environment.
+              </p>
+              <div class="project-footer">
+                <span class="project-tag">Vue.js</span>
+                <span class="project-tag">Firebase</span>
+                <span class="project-tag">Tailwind CSS</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="project">
+            <figure>
+              <img src="placeholder-project-3.jpg" alt="Weather Forecast API" />
+              <figcaption>
+                A RESTful weather data API with real-time forecasts
+              </figcaption>
+            </figure>
+            <div class="project-content">
+              <h3>Weather Forecast API</h3>
+              <p>
+                Created a robust weather forecasting API that provides real-time
+                data, historical weather patterns, and predictive analytics.
+                Technologies: Python, Flask, PostgreSQL.
+              </p>
+              <div class="project-footer">
+                <span class="project-tag">Python</span>
+                <span class="project-tag">Flask</span>
+                <span class="project-tag">PostgreSQL</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="project">
+            <figure>
+              <img src="placeholder-project-4.jpg" alt="Blog Platform" />
+              <figcaption>
+                A content management system for publishing and sharing articles
+              </figcaption>
+            </figure>
+            <div class="project-content">
+              <h3>Blog Platform</h3>
+              <p>
+                Designed and implemented a blogging platform with markdown
+                support, comment system, and category tags. Technologies:
+                Next.js, TypeScript, Prisma, PostgreSQL.
+              </p>
+              <div class="project-footer">
+                <span class="project-tag">Next.js</span>
+                <span class="project-tag">TypeScript</span>
+                <span class="project-tag">Prisma</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="skills" role="region" aria-labelledby="skills-heading">
+        <h2 id="skills-heading">Skills</h2>
+
+        <div class="skills-category">
+          <h3>Programming Languages</h3>
+          <ul class="skills-list">
+            <li>C#</li>
+            <li>JavaScript</li>
+            <li>HTML</li>
+            <li>CSS</li>
+          </ul>
+        </div>
+
+        <div class="skills-category">
+          <h3>Backend Development</h3>
+          <ul class="skills-list">
+            <li>.NET</li>
+            <li>ASP.NET Core</li>
+            <li>Node.js</li>
+            <li>Express.js</li>
+            <li>REST APIs</li>
+            <li>JWT Authentication</li>
+          </ul>
+        </div>
+
+        <div class="skills-category">
+          <h3>Databases</h3>
+          <ul class="skills-list">
+            <li>SQL Server</li>
+            <li>MongoDB</li>
+            <li>MongoDB Atlas</li>
+            <li>Entity Framework Core</li>
+            <li>LINQ</li>
+          </ul>
+        </div>
+        <div class="skills-category">
+          <h3>Development Tools</h3>
+          <ul class="skills-list">
+            <li>Git</li>
+            <li>GitHub</li>
+            <li>Visual Studio</li>
+            <li>Visual Studio Code</li>
+            <li>Postman</li>
+          </ul>
+        </div>
+      </section>
+
+      <section id="contact" role="region" aria-labelledby="contact-heading">
+        <h2 id="contact-heading">Contact</h2>
+        <p>Get in touch with me.</p>
+
+        <form class="contact-form" aria-label="Contact form to send a message">
+          <div class="form-group">
+            <label for="name">Name <span aria-label="required">*</span></label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              required
+              aria-required="true"
+              placeholder="Your full name"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="email"
+              >Email <span aria-label="required">*</span></label
+            >
+            <input
+              type="email"
+              id="email"
+              name="email"
+              required
+              aria-required="true"
+              placeholder="your.email@example.com"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="subject"
+              >Subject <span aria-label="required">*</span></label
+            >
+            <input
+              type="text"
+              id="subject"
+              name="subject"
+              required
+              aria-required="true"
+              placeholder="What is this about?"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="message"
+              >Message <span aria-label="required">*</span></label
+            >
+            <textarea
+              id="message"
+              name="message"
+              rows="5"
+              required
+              aria-required="true"
+              placeholder="Your message here..."
+            ></textarea>
+          </div>
+
+          <button
+            type="submit"
+            class="submit-btn"
+            aria-label="Send contact message"
+          >
+            Send Message
+          </button>
+        </form>
+      </section>
+    </main>
+
+    <footer role="contentinfo">
+      <p>&copy; 2024 My Portfolio. All rights reserved.</p>
+    </footer>
+  </body>
+</html>
