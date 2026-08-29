@@ -202,6 +202,7 @@ header {
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   transition: all var(--transition-smooth);
+  transform: translateY(0);
 }
 
 .site-header.is-scrolled {
@@ -212,6 +213,9 @@ header {
   );
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.28);
   border-bottom-color: rgba(0, 173, 181, 0.85);
+}
+.site-header.nav-hidden {
+  transform: translateY(-100%);
 }
 
 header h1 {

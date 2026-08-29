@@ -19,8 +19,25 @@ document.addEventListener("DOMContentLoaded", () => {
 function setupStickyHeader(header) {
   if (!header) return;
 
+  let lastScrollY = window.scrollY;
+  const hideThreshold = 8; // ignore tiny scroll jitters
+
   const updateHeaderState = () => {
-    header.classList.toggle("is-scrolled", window.scrollY > 18);
+    const currentScrollY = window.scrollY;
+    header.classList.toggle("is-scrolled", currentScrollY > 18);
+
+    if (currentScrollY <= 0) {
+      // back at the very top: always show it
+      header.classList.remove("nav-hidden");
+    } else if (currentScrollY > lastScrollY + hideThreshold) {
+      // scrolling down: slide it up out of view
+      header.classList.add("nav-hidden");
+    } else if (currentScrollY < lastScrollY - hideThreshold) {
+      // scrolling up: bring it back
+      header.classList.remove("nav-hidden");
+    }
+
+    lastScrollY = currentScrollY;
   };
 
   updateHeaderState();
