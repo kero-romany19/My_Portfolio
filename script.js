@@ -5,12 +5,66 @@ const CONTACT_EMAIL = "keroromany709@gmail.com";
 document.addEventListener("DOMContentLoaded", () => {
   const navigationLinks = document.querySelectorAll('a[href^="#"]');
   const contactForm = document.querySelector("#contact form");
+  const header = document.querySelector(".site-header");
+  const sections = document.querySelectorAll("main section[id]");
 
   setupSmoothNavigation(navigationLinks);
   setupProjectFilters();
   setupProjectLightbox();
   setupContactForm(contactForm);
+  setupStickyHeader(header);
+  setupActiveNavigation(navigationLinks, sections);
 });
+
+function setupStickyHeader(header) {
+  if (!header) return;
+
+  const updateHeaderState = () => {
+    header.classList.toggle("is-scrolled", window.scrollY > 18);
+  };
+
+  updateHeaderState();
+  window.addEventListener("scroll", updateHeaderState, { passive: true });
+}
+
+function setupActiveNavigation(links, sections) {
+  if (!links.length || !sections.length) return;
+
+  const setActiveLink = (id) => {
+    links.forEach((link) => {
+      const isActive = link.getAttribute("href") === `#${id}`;
+      link.classList.toggle("active", isActive);
+      if (isActive) {
+        link.setAttribute("aria-current", "page");
+      } else {
+        link.removeAttribute("aria-current");
+      }
+    });
+  };
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      const visibleEntry = entries
+        .filter((entry) => entry.isIntersecting)
+        .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+
+      if (visibleEntry) {
+        setActiveLink(visibleEntry.target.id);
+      }
+    },
+    {
+      rootMargin: "-30% 0px -45% 0px",
+      threshold: [0.1, 0.4, 0.7],
+    },
+  );
+
+  sections.forEach((section) => observer.observe(section));
+
+  if (window.location.hash) {
+    const hashId = window.location.hash.slice(1);
+    setActiveLink(hashId);
+  }
+}
 
 function setupSmoothNavigation(links) {
   links.forEach((link) => {

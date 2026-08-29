@@ -188,13 +188,30 @@ select:focus-visible {
    HEADER & NAVIGATION
    ======================================== */
 header {
-  background: linear-gradient(135deg, #0f172a 0%, #111c33 100%);
+  background: linear-gradient(
+    135deg,
+    rgba(15, 23, 42, 0.96),
+    rgba(17, 28, 51, 0.95)
+  );
   border-bottom: 3px solid var(--primary-color);
   padding: var(--spacing-lg) var(--spacing-xl);
   box-shadow: var(--shadow-sm);
   position: sticky;
   top: 0;
   z-index: 100;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: all var(--transition-smooth);
+}
+
+.site-header.is-scrolled {
+  background: linear-gradient(
+    135deg,
+    rgba(15, 23, 42, 0.98),
+    rgba(17, 28, 51, 0.98)
+  );
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.28);
+  border-bottom-color: rgba(0, 173, 181, 0.85);
 }
 
 header h1 {
@@ -202,6 +219,14 @@ header h1 {
   font-size: 2rem;
   margin-bottom: var(--spacing-sm);
   font-weight: 700;
+  transition:
+    transform var(--transition-smooth),
+    color var(--transition-smooth);
+}
+
+.site-header.is-scrolled h1 {
+  transform: scale(1.02);
+  color: #67e8f9;
 }
 
 nav[role="navigation"] {
@@ -226,10 +251,28 @@ nav a {
   transition: all var(--transition-fast);
   box-shadow: none;
   border: 2px solid var(--primary-color);
+  position: relative;
+  overflow: hidden;
+}
+
+nav a::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.08);
+  opacity: 0;
+  transition: opacity var(--transition-fast);
+}
+
+nav a:hover::before,
+nav a:focus::before,
+nav a.active::before {
+  opacity: 1;
 }
 
 nav a:hover,
-nav a:focus {
+nav a:focus,
+nav a.active {
   background-color: var(--primary-color);
   color: #0f172a;
   box-shadow: 0 0 16px rgba(0, 173, 181, 0.3);
@@ -699,16 +742,28 @@ footer p {
     margin-bottom: var(--spacing-sm);
   }
 
+  nav {
+    width: 100%;
+  }
+
   nav ul {
-    flex-direction: column;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
     gap: var(--spacing-xs);
+    flex-wrap: wrap;
   }
 
   nav a {
-    display: block;
-    width: 100%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+    width: auto;
+    min-width: 0;
     text-align: center;
-    padding: var(--spacing-sm);
+    padding: var(--spacing-xs) var(--spacing-sm);
+    font-size: 0.85rem;
   }
 
   main {
@@ -787,7 +842,14 @@ footer p {
   }
 
   nav ul {
-    gap: var(--spacing-md);
+    gap: var(--spacing-sm);
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+
+  nav a {
+    padding: var(--spacing-xs) var(--spacing-sm);
+    font-size: 0.9rem;
   }
 
   main {
