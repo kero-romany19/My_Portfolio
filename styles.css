@@ -1005,6 +1005,132 @@ footer p {
 }
 
 /* ========================================
+   PROJECT LIGHTBOX / IMAGE MODAL
+   ======================================== */
+.project-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(0, 0, 0, 0.92);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-md);
+  border: none;
+  animation: fadeIn 0.3s ease-out;
+  max-width: 100vw;
+  max-height: 100vh;
+}
+
+.project-lightbox::backdrop {
+  background: rgba(0, 0, 0, 0.92);
+}
+
+.project-lightbox-close {
+  position: absolute;
+  top: var(--spacing-md);
+  right: var(--spacing-md);
+  width: 3rem;
+  height: 3rem;
+  padding: 0;
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  color: #f8fafc;
+  font-size: 2rem;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  flex-shrink: 0;
+}
+
+.project-lightbox-close:hover,
+.project-lightbox-close:focus {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.5);
+  box-shadow: 0 0 16px rgba(0, 173, 181, 0.3);
+  outline: none;
+  transform: scale(1.1);
+}
+
+.project-lightbox-image {
+  max-width: 95vw;
+  max-height: 90vh;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: var(--radius-md);
+  box-shadow: 0 0 40px rgba(0, 173, 181, 0.2);
+  animation: zoomIn 0.3s ease-out;
+}
+
+@keyframes zoomIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Make project images clickable */
+#projects .project img {
+  cursor: pointer;
+}
+
+#projects .project img:hover {
+  filter: brightness(1.1);
+}
+
+/* ========================================
+   LIGHTBOX MOBILE RESPONSIVENESS
+   ======================================== */
+@media screen and (max-width: 768px) {
+  .project-lightbox {
+    padding: var(--spacing-sm);
+  }
+
+  .project-lightbox-close {
+    top: var(--spacing-sm);
+    right: var(--spacing-sm);
+    width: 2.5rem;
+    height: 2.5rem;
+    font-size: 1.5rem;
+  }
+
+  .project-lightbox-image {
+    max-width: 100vw;
+    max-height: 85vh;
+    border-radius: var(--radius-sm);
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .project-lightbox {
+    padding: var(--spacing-xs);
+  }
+
+  .project-lightbox-close {
+    top: var(--spacing-xs);
+    right: var(--spacing-xs);
+    width: 2.2rem;
+    height: 2.2rem;
+    font-size: 1.3rem;
+  }
+
+  .project-lightbox-image {
+    max-width: 100vw;
+    max-height: 80vh;
+    border-radius: 4px;
+  }
+}
+
+/* ========================================
    PRINT STYLES
    ======================================== */
 @media print {
