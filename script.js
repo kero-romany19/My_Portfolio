@@ -16,6 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
   setupActiveNavigation(navigationLinks, sections);
 });
 
+// Keep the header state in one place so scroll behavior stays predictable.
 function setupStickyHeader(header) {
   if (!header) return;
 
@@ -59,6 +60,7 @@ function setupActiveNavigation(links, sections) {
     });
   };
 
+  // Update the active navigation item as each section enters the viewport.
   const observer = new IntersectionObserver(
     (entries) => {
       const visibleEntry = entries
@@ -137,7 +139,14 @@ function setupProjectLightbox() {
 
   const previewImage = lightbox.querySelector(".project-lightbox-image");
   const closeButton = lightbox.querySelector(".project-lightbox-close");
-  const closeLightbox = () => lightbox.close();
+  let activeProjectImage = null;
+
+  // The CSS hides the dialog while closed; this function owns the state change.
+  const closeLightbox = () => {
+    if (!lightbox.open) return;
+
+    lightbox.close();
+  };
 
   projectImages.forEach((image) => {
     image.tabIndex = 0;
@@ -160,6 +169,7 @@ function setupProjectLightbox() {
     );
 
     const openLightbox = () => {
+      activeProjectImage = image;
       previewImage.src = image.currentSrc || image.src;
       previewImage.alt = image.alt || "Project image";
       lightbox.showModal();
@@ -177,17 +187,24 @@ function setupProjectLightbox() {
   });
 
   closeButton.addEventListener("click", closeLightbox);
+  lightbox.addEventListener("cancel", (event) => {
+    event.preventDefault();
+    closeLightbox();
+  });
   lightbox.addEventListener("click", (event) => {
     if (event.target === lightbox) closeLightbox();
   });
   lightbox.addEventListener("close", () => {
     document.body.style.overflow = "";
+    activeProjectImage?.focus();
+    activeProjectImage = null;
   });
 }
 
 function setupContactForm(form) {
   if (!form) return;
 
+  // Validate on blur for feedback, then validate every field before mailto.
   const fields = [...form.querySelectorAll("input, textarea")];
 
   fields.forEach((field) => {
