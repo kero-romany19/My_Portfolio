@@ -344,6 +344,9 @@ section {
   box-shadow: var(--shadow-md);
   transition: all var(--transition-smooth);
   display: block;
+  max-width: 100%;
+  height: auto;
+  aspect-ratio: 1;
 }
 
 .circular-image:hover {
@@ -419,6 +422,7 @@ section {
   display: flex;
   align-items: center;
   justify-content: center;
+  aspect-ratio: 16 / 9;
 }
 
 .project img {
@@ -426,6 +430,8 @@ section {
   height: 100%;
   object-fit: cover;
   transition: transform var(--transition-smooth);
+  max-width: 100%;
+  display: block;
 }
 
 .project:hover img {
@@ -793,8 +799,8 @@ footer p {
   }
 
   .circular-image {
-    width: 150px;
-    height: 150px;
+    width: 140px;
+    height: 140px;
   }
 
   .about-content h2 {
@@ -807,7 +813,8 @@ footer p {
   }
 
   .project figure {
-    height: 150px;
+    height: 180px;
+    aspect-ratio: 16 / 9;
   }
 
   .skills-list {
@@ -826,6 +833,34 @@ footer p {
   footer {
     padding: var(--spacing-md);
     font-size: 0.9rem;
+  }
+}
+
+/* ========================================
+   SMALL MOBILE SCREENS (max-width: 480px)
+   ======================================== */
+@media screen and (max-width: 480px) {
+  .circular-image {
+    width: 100px;
+    height: 100px;
+    border-width: 3px;
+  }
+
+  .project figure {
+    height: 150px;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  h2 {
+    font-size: 1.2rem;
+  }
+
+  nav a {
+    padding: var(--spacing-xs) var(--spacing-xs);
+    font-size: 0.75rem;
   }
 }
 
